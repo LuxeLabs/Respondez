@@ -27,7 +27,19 @@
     "coffee-script": "^1.10.0",
     "connect-assets": "^5.1.0",
     "express": "^4.13.3",
+    "insist-types": "^1.2.1",
     "jade": "^1.11.0",
+    "rethinkdb": "^2.2.1",
     "stylus": "^0.53.0"
+  },
+  "coffeelintConfig": {
+    "indentation": {
+      "level": "error",
+      "value": 3
+    },
+    "max_line_length": {
+      "level": "error",
+      "value": 150
+    }
   }
 }
