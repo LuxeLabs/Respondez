@@ -19,5 +19,4 @@
 4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
 ## Testing
-
 Running `npm test` will run the unit tests with karma.
