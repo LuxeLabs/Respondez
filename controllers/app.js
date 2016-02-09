@@ -3,8 +3,8 @@ var path       = require('path');
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 var app        = module.exports = express();
-var port = process.env.PORT || 1337;
-var mongoURI = process.env.MONGO_CONNECTION ||
+var port       = process.env.PORT || 1337;
+var mongoURI   = process.env.MONGO_CONNECTION ||
 'mongodb://localhost/test';
 
 app.set('view engine', 'jade');
