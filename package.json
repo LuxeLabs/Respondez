@@ -1,0 +1,27 @@
+{
+  "name": "wedding-rsvp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuxeLabs/wedding-rsvp"
+  },
+  "author": "x4nt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuxeLabs/wedding-rsvp/issues"
+  },
+  "homepage": "https://github.com/LuxeLabs/wedding-rsvp",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "connect-assets": "^5.1.0",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.2",
+    "stylus": "^0.53.0"
+  }
+}
