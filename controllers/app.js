@@ -27,4 +27,5 @@ conn.on('error', function () {
 conn.once('open', function (argument) {
    console.log('Database connection established!');
    app.use(require('./index')(conn));
+   app.use(require('./rsvp')(conn));
 });
