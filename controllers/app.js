@@ -18,7 +18,9 @@ app.use(require('connect-assets')());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Connect to mongo
-conn = mongoose.createConnection(mongoURI);
+mongoose.connect(mongoURI);
+
+var conn = mongoose.connection;
 
 conn.on('error', function () {
   console.log('Error! Database connection failed.');

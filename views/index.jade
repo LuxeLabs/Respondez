@@ -1,1 +1,12 @@
 extend layout
+
+block content
+   form(name='rsvp', method='POST', action='/rsvp')
+      div.input
+         span.label Name
+         input(type='text', name='name')
+      div.input
+         span.label Name
+         input(type='text', name='email')
+      div.actions
+         input(type='submit', value='RSVP')
