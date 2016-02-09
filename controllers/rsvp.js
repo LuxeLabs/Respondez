@@ -1,7 +1,7 @@
-var express = require('express');
-var app = express();
+var express    = require('express');
+var app        = express();
 var connection = null
-var mongoose = require ('mongoose');
+var mongoose   = require ('mongoose');
 
 module.exports = function (conn) {
    connection = conn;
