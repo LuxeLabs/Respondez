@@ -2,6 +2,7 @@ var express    = require('express');
 var app        = express();
 var connection = null
 var mongoose   = require('mongoose');
+var RSVP       = require('../models/rsvp_model.js');
 
 module.exports = function (conn) {
    connection = conn;
@@ -9,22 +10,6 @@ module.exports = function (conn) {
 };
 
 app.post('/rsvp', function (req, res, next) {
-
-   var rsvpSchema = new mongoose.Schema({
-      name: String,
-      email: { type: String, trim: true },
-      num_attending: { type: Number, min: 0 }
-   });
-
-   rsvpSchema.pre('save', function(next) {
-      var currentDate = new Date();
-      this.updated_at = currentDate;
-      if (!this.created_at)
-      this.created_at = currentDate;
-      next();
-   });
-
-   var RSVP = mongoose.model('RSVP', rsvpSchema);
 
    var rsvp = new RSVP({
       name: req.body.name,
@@ -34,6 +19,6 @@ app.post('/rsvp', function (req, res, next) {
 
    rsvp.save(function (err) {
       if (err) console.log ('Error on save!')
-      res.redirect('/');
+      res.redirect('/success');
    });
 });
