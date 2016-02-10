@@ -11,6 +11,8 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: false });
 app.set('views', path.join(__dirname, '../views'));
 
+console.log(path.join(__dirname, '../public'));
+
 app.use(express.query());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
