@@ -22,6 +22,8 @@
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "mongoose": "4.4.1",
-    "stylus": "^0.53.0"
+    "sendgrid": "^2.0.0",
+    "stylus": "^0.53.0",
+    "twilio": "^3.3.0-edge"
   }
 }
