@@ -6,7 +6,7 @@ var app        = module.exports = express();
 var port       = process.env.PORT || 1337;
 var mongoURI   = process.env.MONGO_CONNECTION ||
 'mongodb://localhost/test';
-var favicon = require('serve-favicon');
+var favicon    = require('serve-favicon');
 
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
