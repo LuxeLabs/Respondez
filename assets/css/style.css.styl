@@ -2,6 +2,7 @@ html, body, div, block
    height 100%
 
 body
+   height 100%
    background-color #2B3856
    background linear-gradient(#2B3856, #6F7E9F)
    background -webkit-linear-gradient(#2B3856, #6F7E9F)
@@ -29,12 +30,13 @@ form[name="rsvp"]
    display block
    position relative
    width 100%
-   margin 50px auto
+   margin 70px auto
+   text-align center
 
-.label,
 .actions
    display block
    color white
+   margin-top 50px
 
 div[class="input"]
    display block
@@ -44,36 +46,68 @@ div[class="input"]
    &first-child
       margin-top 70px
 
-.label
-   font-family 'Lato'
-   font-size 18px
-
-span[class="label"]
-   width 166px
-   margin 0 auto
-   text-align left
-
 input[type="text"]
    display block
+   width 200px
+   background linear-gradient(#222, #45484d)
    margin 0 auto
    padding 10px
    border none
-   border-bottom solid 2px #c9c9c9
    border-radius 3px
    color black
    transition border 0.3s
+   box-shadow inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4)
 
-input[type="text"]focus,
+input[type="text"].focus,
 input[type="text"].focus
    border-bottom solid 2px #969696
-   border-left solid 2px #969696
 
 .btn
    display block
    width 100px
    margin 0 auto
-   background-color #E69E56
+   background linear-gradient(#a35d17, #E69E56)
    font-family 'Lato'
+
+.checker
+   display inline-block
+   width 20px
+   position relative
+   margin 15px 5px 15px 3px
+
+   label
+      width 20px
+      height 20px
+      cursor pointer
+      position absolute
+      top 0
+      left 0
+      background linear-gradient(#222, #45484d)
+      border-radius 3px
+      box-shadow inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4)
+
+      &:after
+         content ''
+         width 12px
+         height 8px
+         position absolute
+         top 4px
+         left 4px
+         border 3px solid #fcfff4
+         border-top none
+         border-right none
+         background transparent
+         opacity 0
+         transform rotate(-45deg)
+
+      &:hover::after
+         opacity 0.3
+
+   input[type=checkbox]
+      visibility hidden
+
+      &:checked + label:after
+         opacity 1
 
 h1.title
    color #a35d17

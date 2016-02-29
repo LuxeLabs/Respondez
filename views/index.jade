@@ -3,13 +3,16 @@ extend layout
 block content
    form(name='rsvp', method='POST', action='/rsvp')
       div.input
-         span.label Name
-         input(type='text', name='name')
+         input(type='text', placeholder='Name', name='name')
+      span.label Attending
+      div.checker
+         input(type='checkbox', value='None', id='checker1', name='check' checked)
+         label(for='checker1')
+      span.label Not Attending
+      div.checker
+         input(type='checkbox', value='None', id='checker2', name='check' checked)
+         label(for='checker2')
       div.input
-         span.label Email
-         input(type='text', name='email')
-      div.input
-         span.label Party Size
-         input(type='text', name='num_attending')
+         input(type='text', placeholder='Number of Invites Accepted', name='num_attending')
       div.actions
          input(type='submit', class ='btn', value='RSVP')
