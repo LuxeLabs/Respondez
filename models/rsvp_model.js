@@ -3,8 +3,9 @@ var Schema = mongoose.Schema;
 
 var rsvpSchema = new Schema({
    name: String,
-   email: { type: String, trim: true },
-   num_attending: { type: Number, min: 0 },
+   attending: { type: Boolean },
+   not_attending: { type: Boolean },
+   confirmed_invites: { type: Number, min: 0 },
    created_at: { type: Date }
 });
 
@@ -14,7 +15,7 @@ rsvpSchema.pre('save', function(next) {
    var currentDate = new Date();
    self.updated_at = currentDate;
    if (!self.created_at)
-   self.created_at = currentDate;
+      self.created_at = currentDate;
    next();
 });
 

@@ -1,18 +1,26 @@
 extend layout
 
 block content
-   form(name='rsvp', method='POST', action='/rsvp')
+   script(type='text/javascript').
+      function cbChange(obj) {
+         var cbs = document.getElementsByClassName("cb");
+         for (var i = 0; i < cbs.length; i++) {
+              cbs[i].checked = false;
+         }
+         obj.checked = true;
+      }
+   form(name='rsvp' method='POST' action='/rsvp')
       div.input
-         input(type='text', placeholder='Name', name='name')
+         input(type='text' placeholder='Name' name='name')
       span.label Attending
       div.checker
-         input(type='checkbox', value='None', id='checker1', name='check' checked)
-         label(for='checker1')
+         input(class='cb' onchange="cbChange(this)" type='checkbox' value='true' id='attending' name='attending' checked)
+         label(for='attending')
       span.label Not Attending
       div.checker
-         input(type='checkbox', value='None', id='checker2', name='check' checked)
-         label(for='checker2')
+         input(class='cb' onchange="cbChange(this)" type='checkbox' value='true' id='not_attending' name='not_attending' unchecked)
+         label(for='not_attending')
       div.input
-         input(type='text', placeholder='Number of Invites Accepted', name='num_attending')
+         input(type='text' placeholder='Number of Confirmed Invites' name='confirmed_invites')
       div.actions
-         input(type='submit', class ='btn', value='RSVP')
+         input(type='submit' class ='btn' value='RSVP')
