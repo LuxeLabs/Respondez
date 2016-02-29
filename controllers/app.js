@@ -6,11 +6,13 @@ var app        = module.exports = express();
 var port       = process.env.PORT || 1337;
 var mongoURI   = process.env.MONGO_CONNECTION ||
 'mongodb://localhost/test';
+var favicon = require('serve-favicon');
 
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
 app.set('views', path.join(__dirname, '../views'));
 
+app.use(favicon(path.join(__dirname,'../public','favicon.ico')));
 app.use(express.query());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
