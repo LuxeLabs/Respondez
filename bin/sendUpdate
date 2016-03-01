@@ -31,12 +31,11 @@ conn.once('open', function (argument) {
             console.log(err);
             return;
          }
-         console.log(result);
          sendgrid.send({
             to:       'addisonshaw93@gmail.com',
             from:     'wedding@rsvp.xxx',
             subject:  'Wedding Invitation Updates!',
-            text:     'There are a total of ' + result.totalConfirmedInvites + ' confirmed invites.'
+            text:     'There are a total of ' + result[0].totalConfirmedInvites + ' confirmed invites.'
          }, function(err, json) {
                if (err) { return console.error(err); }
                   console.log(json);
