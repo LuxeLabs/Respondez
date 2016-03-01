@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-require('coffee-script/register');
 
 var mongoose   = require('mongoose');
 var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
