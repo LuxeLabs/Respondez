@@ -63,7 +63,6 @@ input[type="text"]
    padding-left 25px
    border none
    transition border 0.3s
-   border-bottom solid 3px #7f7f7f
    font-family 'Torque-Medium'
 
 input[type="text"].focus,
@@ -82,6 +81,10 @@ input[type="text"].focus
    color black
    font-size 20px
    font-family 'Torque-Ultra'
+   transition background-color 0.2s
+
+   &:hover
+      background-color #ebb177
 
 .checker
    display inline-block
@@ -112,6 +115,7 @@ input[type="text"].focus
          background transparent
          opacity 0
          transform rotate(-45deg)
+         transition opacity 0.2s
 
       &:hover::after
          opacity 0.3
