@@ -2,10 +2,36 @@ html, body, div, block
    height 100%
 
 body
-   height 100%
-   background-color #2B3856
-   background linear-gradient(#2B3856, #6F7E9F)
-   background -webkit-linear-gradient(#2B3856, #6F7E9F)
+  background-image -moz-linear-gradient(45deg, #2B3856 25%, transparent 25%),
+        -moz-linear-gradient(-45deg, #2B3856 25%, transparent 25%),
+        -moz-linear-gradient(45deg, transparent 75%, #2B3856 75%),
+        -moz-linear-gradient(-45deg, transparent 75%, #2B3856 75%)
+  background-image -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #2B3856), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #2B3856), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #2B3856)),
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #2B3856))
+  background-image -webkit-linear-gradient(45deg, #2B3856 25%, transparent 25%),
+        -webkit-linear-gradient(-45deg, #2B3856 25%, transparent 25%),
+        -webkit-linear-gradient(45deg, transparent 75%, #2B3856 75%),
+        -webkit-linear-gradient(-45deg, transparent 75%, #2B3856 75%)
+  background-image -o-linear-gradient(45deg, #2B3856 25%, transparent 25%),
+        -o-linear-gradient(-45deg, #2B3856 25%, transparent 25%),
+        -o-linear-gradient(45deg, transparent 75%, #2B3856 75%),
+        -o-linear-gradient(-45deg, transparent 75%, #2B3856 75%)
+  background-image linear-gradient(45deg, #2B3856 25%, transparent 25%),
+        linear-gradient(-45deg, #2B3856 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2B3856 75%),
+        linear-gradient(-45deg, transparent 75%, #2B3856 75%)
+  -moz-background-size 2px 2px
+  background-size 2px 2px
+  -webkit-background-size 2px 2.1px
+  background-position 0 0, 1px 0, 1px -1px, 0px 1px
+
+// body
+//    height 100%
+//    background-color #2B3856
+//    background linear-gradient(#2B3856, #6F7E9F)
+//    background -webkit-linear-gradient(#2B3856, #6F7E9F)
 
 @font-face
    font-family 'Scriptina'
@@ -21,8 +47,8 @@ body
    src url(/fonts/Torque-Medium.otf)
 
 @font-face
-   font-family 'Brandon-Light'
-   src url(/fonts/Brandon_light.otf)
+   font-family 'ProximaNova-SemiBold'
+   src url(/fonts/proximanova-semibold.otf)
 
 @font-face
    font-family 'Steel-Tongs'
@@ -50,7 +76,8 @@ form[name="rsvp"]
    margin-top 50px
 
 .label
-   font-size 13px
+   color #4c4c4c
+   font-size 15px
    font-family 'Torque-Medium'
 
 div[class="input"]
@@ -71,6 +98,9 @@ input[type="text"]
    padding-left 25px
    border none
    transition border 0.3s
+   -o-transition border 0.3s
+   -moz-transition border 0.3s
+   -webkit-transition border 0.3s
    font-family 'Torque-Medium'
 
 input[type="text"].focus,
@@ -82,17 +112,21 @@ input[type="text"].focus
    width 160px
    height 60px
    margin 0 auto
-   background-color #E69E56
+   background-color #6F7E9F
    border 0
-   border-bottom solid 3px #a35d17
+   border-bottom solid 3px #2B3856
    border-radius 0
-   color #323232
+   color #4c4c4c
    font-size 20px
    font-family 'Torque-Ultra'
-   transition background-color 0.2s
+   transition background-color 0.3s, border-bottom 0.3s
+   -o-transition background-color 0.3s, border-bottom 0.3s
+   -moz-transition background-color 0.3s, border-bottom 0.3s
+   -webkit-transition background-color 0.3s, border-bottom 0.3s
 
    &:hover
       background-color #ebb177
+      border-bottom solid 3px #a35d17
 
 .checker
    display inline-block
@@ -123,7 +157,13 @@ input[type="text"].focus
          background transparent
          opacity 0
          transform rotate(-45deg)
-         transition opacity 0.2s
+         -o-transform rotate(-45deg)
+         -moz-transform rotate(-45deg)
+         -webkit-transform rotate(-45deg)
+         transform opacity 0.2s
+         -o-transform opacity 0.2s
+         -moz-transform opacity 0.2s
+         -webkit-transform opacity 0.2s
 
       &:hover::after
          opacity 0.3
@@ -134,8 +174,12 @@ input[type="text"].focus
       &:checked + label:after
          opacity 1
 
+h1
+   background -webkit-linear-gradient(#E69E56, #a35d17)
+   -webkit-background-clip text
+   -webkit-text-fill-color transparent
+
 h1.title
-   color #E69E56
    font-family 'Steel-Tongs'
    font-size 100px
    text-align center
