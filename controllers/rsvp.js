@@ -1,13 +1,13 @@
 var express    = require('express');
 var app        = express();
-var connection = null
 var mongoose   = require('mongoose');
 var client     = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
 var RSVP       = require('../models/rsvp_model.js');
+var mongoURI   = process.env.MONGO_CONNECTION ||
+'mongodb://localhost/test';
 
-module.exports = function (conn) {
-   connection = conn;
+module.exports = function () {
    return app;
 };
 
@@ -38,7 +38,7 @@ app.post('/rsvp', function (req, res, next) {
    // Only send updates if RSVP is attending.
    if (attending) {
       client.sendMessage({
-          to:'+19139910274',
+          to:process.env.UPDATE_PHONE,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
       }, function(err, responseData) {
@@ -49,7 +49,7 @@ app.post('/rsvp', function (req, res, next) {
       });
 
       sendgrid.send({
-         to:       'addisonshaw93@gmail.com',
+         to:       process.env.UPDATE_EMAIL,
          from:     'wedding@rsvp.xxx',
          subject:  'Someone RSVP\'d!',
          text:     data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
@@ -59,7 +59,7 @@ app.post('/rsvp', function (req, res, next) {
       });
    } else {
       client.sendMessage({
-          to:'+19139910274',
+          to:process.env.UPDATE_PHONE,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' has declined the invite.'
       }, function(err, responseData) {
@@ -70,7 +70,7 @@ app.post('/rsvp', function (req, res, next) {
       });
 
       sendgrid.send({
-         to: 'addisonshaw93@gmail.com',
+         to: process.env.UPDATE_EMAIL,
          from: 'wedding@rsvp.xxx',
          subject: 'Someone declined their invite.',
          text: data.name + ' has declined the invite.'
@@ -80,8 +80,20 @@ app.post('/rsvp', function (req, res, next) {
       });
    }
 
-   rsvp.save(function (err) {
-      if (err) console.log ('Error on save!')
-      res.redirect('/success');
+   // Connect to mongo
+   mongoose.connect(mongoURI);
+
+   var conn = mongoose.connection;
+
+   conn.on('error', function () {
+     console.log('Error! Database connection failed.');
+   });
+
+   conn.once('open', function (argument) {
+      rsvp.save(function (err) {
+         if (err) console.log (err);
+         res.redirect('/success');
+         mongoose.connection.close()
+      });
    });
 });
