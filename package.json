@@ -1,5 +1,5 @@
 {
-  "name": "wedding-rsvp",
+  "name": "Respondez",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -7,14 +7,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LuxeLabs/wedding-rsvp"
+    "url": "https://github.com/LuxeLabs/Respondez"
   },
   "author": "x4nt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LuxeLabs/wedding-rsvp/issues"
+    "url": "https://github.com/LuxeLabs/Respondez/issues"
   },
-  "homepage": "https://github.com/LuxeLabs/wedding-rsvp",
+  "homepage": "https://github.com/LuxeLabs/Respondez",
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
