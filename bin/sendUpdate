@@ -22,7 +22,7 @@ conn.once('open', function (argument) {
             _id: null,
             totalConfirmedInvites: {
                $sum: {
-                  $add: ["confirmed_invites"]
+                  $add: ["$confirmed_invites"]
                }
             }
          }
