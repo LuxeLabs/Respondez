@@ -38,7 +38,18 @@ app.post('/rsvp', function (req, res, next) {
    // Only send updates if RSVP is attending.
    if (attending) {
       client.sendMessage({
-          to:process.env.UPDATE_PHONE,
+          to:   process.env.UPDATE_PHONE,
+          from: process.env.TWILIO_PHONE,
+          body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
+      }, function(err, responseData) {
+          if (!err) {
+              console.log(responseData.from);
+              console.log(responseData.body);
+          }
+      });
+
+      client.sendMessage({
+          to:   process.env.UPDATE_PHONE_2,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
       }, function(err, responseData) {
@@ -49,17 +60,28 @@ app.post('/rsvp', function (req, res, next) {
       });
 
       sendgrid.send({
-         to:       process.env.UPDATE_EMAIL,
-         from:     'wedding@rsvp.xxx',
-         subject:  'Someone RSVP\'d!',
-         text:     data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
+         to:        [process.env.UPDATE_EMAIL, process.env.UPDATE_EMAIL_2],
+         from:      'wedding@rsvp.xxx',
+         subject:   'Someone RSVP\'d!',
+         text:      data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
       }, function(err, json) {
             if (err) { return console.error(err); }
                console.log(json);
       });
    } else {
       client.sendMessage({
-          to:process.env.UPDATE_PHONE,
+          to:   process.env.UPDATE_PHONE,
+          from: process.env.TWILIO_PHONE,
+          body: data.name + ' has declined the invite.'
+      }, function(err, responseData) {
+          if (!err) {
+              console.log(responseData.from);
+              console.log(responseData.body);
+          }
+      });
+
+      client.sendMessage({
+          to:   process.env.UPDATE_PHONE_2,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' has declined the invite.'
       }, function(err, responseData) {
@@ -70,10 +92,10 @@ app.post('/rsvp', function (req, res, next) {
       });
 
       sendgrid.send({
-         to: process.env.UPDATE_EMAIL,
-         from: 'wedding@rsvp.xxx',
+         to:       [process.env.UPDATE_EMAIL, process.env.UPDATE_EMAIL_2],
+         from:    'wedding@rsvp.xxx',
          subject: 'Someone declined their invite.',
-         text: data.name + ' has declined the invite.'
+         text:    data.name + ' has declined the invite.'
       }, function(err, json) {
             if (err) { return console.error(err); }
                console.log(json);
