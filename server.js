@@ -1,4 +1,4 @@
-var express    = require('express');
+zvar express    = require('express');
 var path       = require('path');
 var bodyParser = require('body-parser');
 var app        = express();
@@ -6,7 +6,9 @@ var favicon    = require('serve-favicon');
 var port       = process.env.PORT || 1337;
 
 if (!process.env.UPDATE_PHONE) throw Error('Missing: process.env.UPDATE_PHONE');
+if (!process.env.UPDATE_PHONE_2) throw Error('Missing: process.env.UPDATE_PHONE_2');
 if (!process.env.UPDATE_EMAIL) throw Error('Missing: process.env.UPDATE_EMAIL');
+if (!process.env.UPDATE_EMAIL) throw Error('Missing: process.env.UPDATE_EMAIL_2');
 if (!process.env.TWILIO_PHONE) throw Error('Missing: process.env.TWILIO_PHONE');
 if (!process.env.TWILIO_SID) throw Error('Missing: process.env.TWILIO_SID');
 if (!process.env.TWILIO_TOKEN) throw Error('Missing: process.env.TWILIO_TOKEN');
