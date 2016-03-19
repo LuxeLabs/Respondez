@@ -1,5 +1,6 @@
 Respondez!
 ===========
+A wedding RSVP app with a Mongo Database, Email & SMS notifications.
 
 ### Environment Requirements
 ```
