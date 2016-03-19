@@ -38,23 +38,23 @@ app.post('/rsvp', function (req, res, next) {
    // Only send updates if RSVP is attending.
    if (attending) {
       client.sendMessage({
-          to:   process.env.UPDATE_PHONE,
-          from: process.env.TWILIO_PHONE,
-          body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
-      }, function(err, responseData) {
-          if (!err) {
-              console.log(responseData.from);
-              console.log(responseData.body);
-          }
-      });
-
-      client.sendMessage({
           to:   process.env.UPDATE_PHONE_2,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
       }, function(err, responseData) {
           if (!err) {
-              console.log(responseData.from);
+              console.log(responseData.to);
+              console.log(responseData.body);
+          }
+      });
+
+      client.sendMessage({
+          to:   process.env.UPDATE_PHONE,
+          from: process.env.TWILIO_PHONE,
+          body: data.name + ' just confirmed ' + data.confirmed_invites + ' invite(s)!'
+      }, function(err, responseData) {
+          if (!err) {
+              console.log(responseData.to);
               console.log(responseData.body);
           }
       });
@@ -70,23 +70,23 @@ app.post('/rsvp', function (req, res, next) {
       });
    } else {
       client.sendMessage({
-          to:   process.env.UPDATE_PHONE,
-          from: process.env.TWILIO_PHONE,
-          body: data.name + ' has declined the invite.'
-      }, function(err, responseData) {
-          if (!err) {
-              console.log(responseData.from);
-              console.log(responseData.body);
-          }
-      });
-
-      client.sendMessage({
           to:   process.env.UPDATE_PHONE_2,
           from: process.env.TWILIO_PHONE,
           body: data.name + ' has declined the invite.'
       }, function(err, responseData) {
           if (!err) {
-              console.log(responseData.from);
+              console.log(responseData.to);
+              console.log(responseData.body);
+          }
+      });
+
+      client.sendMessage({
+          to:   process.env.UPDATE_PHONE,
+          from: process.env.TWILIO_PHONE,
+          body: data.name + ' has declined the invite.'
+      }, function(err, responseData) {
+          if (!err) {
+              console.log(responseData.to);
               console.log(responseData.body);
           }
       });
