@@ -2,10 +2,12 @@
 
 var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
 
-var email = new sendgrid.Email();
-email.addTo("addison.shaw@cerner.com");
-email.setFrom("dave.shaw@cerner.com");
-email.setSubject("Hey Bro");
-email.setHtml("<html><head><meta http-equiv=3D\"Content-Type\" content=3D\"text/html; charset=3Dus-ascii\"><meta name=3D\"Generator\" content=3D\"Microsoft Exchange Server\"><!-- converted from rtf --><style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left:= #800000 2px solid; } --></style></head><body><font face=3D\"Calibri\" size=3D\"2\"><span style=3D\"font-size:11pt;\"><div>Sdfdf</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=3D\"2\" color=3D\"#0D94D2\"><span style=3D\"font-size:10pt;\"><b>=Dave</b><font color=3D\"#6A737B\"><b>&nbsp;</b></font><b>Shaw<br></b><font color=3D\"#6A737B\">Manager</font><font color=3D\"#6A737B\"=><b>,&nbsp;</b></font><font color=3D\"#6A737B\">Engagement Ldrshp Transitions<br></font><a href=3D\"mailto:addison.shaw@cerner.com\"><font color=3D\"#6A737B\"><=u>dave.shaw@cerner.com</u></font></a><font color=3D\"#6A737B\"><b>&nbsp;&n=bsp;</b></font><font color=3D\"#6A737B\">| 913-991-274 mobile<br></font><font color=3D\"#6A737B\">Cerner Corporation&nbsp;|&nbsp;</font><a hre=f=3D\"http://www.cerner.com\"><font color=3D\"#6A737B\"><u>www.cerner.com</u></=font></a></span></font></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></span></font>");
-
-sendgrid.send(email);
+sendgrid.send({
+    to:       'addison.shaw@cerner.com',
+    from:     'Dave Shaw <dave.shaw@cerner.com>',
+    subject:  'Hey Bro',
+    text:     'Wanna lyft at da gym?'
+ }, function(err, json) {
+       if (err) { return console.error(err); }
+          console.log(json);
+ });
