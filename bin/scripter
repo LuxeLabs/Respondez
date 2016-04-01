@@ -3,7 +3,7 @@
 var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
 
 sendgrid.send({
-    to:       'addison.shaw@cerner.com',
+    to:       'brandon.medina@cerner.com',
     from:     'jasmine.glaese@cerner.com',
     subject:  'HR - Company Policy Violation',
     text:     'Brandon, there have been a few complaints about your long hair. Please review our corporate policy. https://wiki.ucern.com/display/public/HR/Dress+and+Appearance+Standards+Policy'
