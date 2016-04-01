@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
+
+sendgrid.send({
+    to:       'addison.shaw@cerner.com',
+    from:     'eric.griffing@cerner.com',
+    subject:  'What',
+    text:     'Cool'
+ }, function(err, json) {
+       if (err) { return console.error(err); }
+          console.log(json);
+ });
