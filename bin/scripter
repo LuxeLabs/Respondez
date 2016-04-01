@@ -3,10 +3,10 @@
 var sendgrid   = require('sendgrid')(process.env.SENDGRID_KEY);
 
 sendgrid.send({
-    to:       'addison.shaw@cerner.com',
-    from:     'eric.griffing@cerner.com',
-    subject:  'What',
-    text:     'Cool'
+    to:       'eric.griffing@cerner.com',
+    from:     'dave.shaw@cerner.com',
+    subject:  'Hey Bro',
+    text:     'Wanna lyft at da gym?'
  }, function(err, json) {
        if (err) { return console.error(err); }
           console.log(json);
