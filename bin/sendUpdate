@@ -32,7 +32,7 @@ conn.once('open', function (argument) {
             return;
          }
          sendgrid.send({
-            to:       ['addisonshaw93@gmail.com', 'rachelcarter36@yahoo.com'],
+            to:       'addisonshaw93@gmail.com',
             from:     'wedding@rsvp.xxx',
             subject:  'Wedding Invitation Updates!',
             text:     'There are a total of ' + result[0].totalConfirmedInvites + ' confirmed invites.'
